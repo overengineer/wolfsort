@@ -41,15 +41,16 @@
 #include <vector>
 
 #include "wolfsort.h"
-#include "flowsort.h"
+//#include "flowsort.h"
 #include "gridsort.h"
 #include "quadsort.h"
+#include "looksort.h"
 //#include "pdqsort.h"
 //#include "tailsort.h"
 //#include "vergesort.h"
 //#include "wikisort.h"
 //#include "grailsort.h"
-//#include "timsort.h" // https://github.com/timsort/cpp-TimSort
+#include "timsort.hpp" // https://github.com/timsort/cpp-TimSort
 
 #define STDSORT_H
 
@@ -171,10 +172,13 @@ void test_sort(void *array, void *unsorted, void *valid, int minimum, int maximu
 					quadsort(array, max, size, cmpf);
 					break;
 
-
-				case 'f':
-					flowsort(array, max, size, cmpf);
+				case 'l':
+					looksort(array, max, size, cmpf);
 					break;
+
+				// case 'f':
+				// 	flowsort(array, max, size, cmpf);
+				// 	break;
 
 				case 'k':
 //					kewlsort(array, max, size, cmpf);
@@ -548,7 +552,7 @@ int main(int argc, char **argv)
 	long double *da_array, *dr_array, *dv_array;
 
 	char dist[100];
-	char *sorts[] = { "+", "std::sort", "gridsort", "timsort", "quadsort", "wolfsort", "flowsort", };
+	char *sorts[] = { "+", "std::sort", "gridsort", "timsort", "quadsort", "wolfsort", "looksort"};
 
 	if (argc >= 1 && argv[1] && *argv[1])
 	{
